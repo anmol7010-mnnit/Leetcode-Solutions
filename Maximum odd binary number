@@ -1,0 +1,36 @@
+class Solution {
+public:
+    string maximumOddBinaryNumber(string s) {
+        
+        int one = 0;
+        
+        for (int i = 0; i < s.length(); i++) {
+            if (s[i] == '1') {
+                one++;
+            }
+        }
+        
+        int zero = s.length()-one;
+        
+        string ans;
+        
+        if (one == 1) {
+            while(zero--) {
+                ans.push_back('0');
+            }
+            ans.push_back('1');
+        }
+        else {
+            one--;
+            while(one--) {
+                ans.push_back('1');
+            }
+            while(zero--) {
+                ans.push_back('0');
+            }
+            ans.push_back('1');
+        }
+        
+        return ans;
+    }
+};
