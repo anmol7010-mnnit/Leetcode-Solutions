@@ -1,3 +1,5 @@
+// updated
+
 class Solution {
 public:
     bool check(int num) {
