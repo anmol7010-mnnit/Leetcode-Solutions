@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+class Solution {
+public:
+    int minProcessingTime(vector<int>& processorTime, vector<int>& tasks) {
+        
+        sort(tasks.begin(),tasks.end(),greater<int>());
+        sort(processorTime.begin(),processorTime.end());
+
+        int n = processorTime.size();
+
+        long ans = 0;
+        
+        for (int i = 0; i < n; i++) {
+            long sum = 0;
+            for (int j = i*4; j < (i*4)+4; j++) {
+                sum = max(sum, (long)(tasks[j]+processorTime[i]));
+            }
+            ans = max(ans,sum);
+        }
+        
+        return ans;
+    }
+};
