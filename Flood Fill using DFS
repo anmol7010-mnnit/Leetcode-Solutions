@@ -1,0 +1,37 @@
+class Solution {
+public:
+    void dfs(int row, int col, int iniColor, int color, vector<vector<int>> &ans, vector<vector<int>> &image) {
+
+        int n = image.size();
+        int m = image[0].size();
+
+        ans[row][col] = color;
+
+        int delr[] = {-1,0,+1,0};
+        int delc[] = {0,+1,0,-1};
+
+        for (int i = 0; i < 4; i++) {
+            int nrow = row + delr[i];
+            int ncol = col + delc[i];
+
+            if (nrow >= 0 && ncol >= 0 && nrow < n && ncol < m && image[nrow][ncol] == iniColor && ans[nrow][ncol] != color) {
+                dfs(nrow, ncol, iniColor, color, ans, image);
+            }
+        }
+    }
+
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
+
+        int n = image.size();
+        int m = image[0].size();
+
+        int iniColor = image[sr][sc];
+
+        vector <vector<int>> ans = image;
+
+        dfs(sr, sc, iniColor, color, ans, image);
+
+        return ans;
+
+    }
+};
