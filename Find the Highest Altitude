@@ -2,7 +2,7 @@ class Solution {
 public:
     int largestAltitude(vector<int>& gain) {
 
-        int sum = 0;
+        int sum = 0; // updated
         int maxi = INT_MIN;
 
         for (int i = 0; i < gain.size(); i++) {
